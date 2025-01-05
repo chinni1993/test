@@ -1,25 +1,25 @@
-Pipeline {
+pipeline {
     agent any
 
     stages {
         stage('Git checkout') {
             steps {
-                echo 'This is git checkout stage'
+                echo 'code checkout stage'
             }
         }
-        stage('build stage') {
+        stage('Build') {
             steps {
-                echo 'This is build stage'
+                echo 'code build stage'
             }
         }
-        stage('push to artifactory') {
+        stage('Artifact') {
             steps {
-                echo 'This is push stage'
+                echo 'artifact stage'
             }
         }
-        stage('deploy') {
+        stage('Deploy') {
             steps {
-                echo 'This is deploy stage'
+                echo 'deploy stage'
             }
         }
     }
