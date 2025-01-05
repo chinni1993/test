@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Deploy stage') {
             steps {
-                sh 'sudo cp /home/ec2-user/jenkins-slave1/workspace/job1/target/*.jar /opt/*tomcat/webapps/'
+                sh 'sudo cp /home/ec2-user/jenkins-slave1/workspace/myjobon-pipeline/target/*.jar /opt/*tomcat/webapps/'
             }
         }
     }
