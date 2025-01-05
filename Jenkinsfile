@@ -1,26 +1,27 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Git checkout') {
-            steps {
-                echo 'code checkout stage'
-            }
+Pipeline {
+agent {
+  label 'Tomcat-slave'
+}
+   Stages{
+        stage('Git-checkout') {
+        steps {
+               git branch: 'main', url: 'https://github.com/chinni1993/test.git'
         }
-        stage('Build') {
-            steps {
-                echo 'code build stage'
-            }
+     }
+        stage('Build stage') {
+        steps {
+               sh 'mvn clean install'
         }
-        stage('Artifact') {
-            steps {
-                echo 'artifact stage'
-            }
+     }
+        stage('push to artifactory') {
+        steps {
+               sleep 15
+        }`
+     }
+        stage('deploy') {
+        steps {
+               sh 'sudo cp /home/ec2-user/jenkins-slave1/workspace/job1/target/*.jar /opt/*tomcat/webapps/'
         }
-        stage('Deploy') {
-            steps {
-                echo 'deploy stage'
-            }
-        }
-    }
+     }
+  }
 }
